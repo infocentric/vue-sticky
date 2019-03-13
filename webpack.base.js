@@ -12,7 +12,11 @@ module.exports = {
         ],
       },
       { test: /\.vue$/, loader: 'vue-loader' },
-      { test: /\.js$/, loader: 'buble-loader', options: { objectAssign: 'Object.assign' } },
+      { test: /\.js$/, loader: 'buble-loader', options: {
+          objectAssign: 'Object.assign',
+          transforms: { forOf: false }
+        }
+      }
     ],
   },
   plugins: [
