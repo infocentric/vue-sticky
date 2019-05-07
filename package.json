@@ -3,6 +3,7 @@
   "version": "3.3.4",
   "description": "A directive to sticky element for vue.js.",
   "main": "./dist/vue-sticky.js",
+  "module": "esm.js",
   "scripts": {
     "build": "webpack -p",
     "dev": "webpack-dev-server --config ./webpack.example.config.js --inline --hot",
@@ -23,6 +24,16 @@
     {
       "name": "Istvan Farkas",
       "email": "ifarkas@infocentric.ch",
+      "url": "https://github.com/infocentric"
+    },
+    {
+      "name": "Thilo Holzer",
+      "email": "tholzer@infocentric.ch",
+      "url": "https://github.com/infocentric"
+    },
+    {
+      "name": "Joël Poulin",
+      "email": "jpoulin@infocentric.ch",
       "url": "https://github.com/infocentric"
     }
   ],
