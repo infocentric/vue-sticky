@@ -35,6 +35,11 @@
       "name": "Joël Poulin",
       "email": "jpoulin@infocentric.ch",
       "url": "https://github.com/infocentric"
+    },
+    {
+      "name": "Stephan Ullenboom",
+      "email": "stephan.ullenboom@47northlabs.ch",
+      "url": "https://gitlab.com/47northlabs/public"
     }
   ],
   "license": "ISC",
