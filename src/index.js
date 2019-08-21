@@ -10,7 +10,7 @@ const getInitialConfig = el => {
   }
 }
 
-const stickySides = [ 'top', 'bottom' ]
+const stickySides = [ 'top', 'bottom', 'both' ]
 
 const getBindingConfig = binding => {
   const params = binding.value || {}
@@ -80,10 +80,10 @@ export default {
 
     instance.active = false
 
-    const sticky = () => {
+    const sticky = (side) => {
       if (supportCSSSticky || instance.active) return
 
-      const { disabled, stickySide, stickyTop, stickyBottom, zIndex } = instance.bindingConfig
+      const { disabled, stickyTop, stickyBottom, zIndex } = instance.bindingConfig
 
       if (disabled) return
 
@@ -94,7 +94,8 @@ export default {
       if (childStyle) {
         childStyle.position = 'fixed'
         childStyle.zIndex = zIndex
-        if (stickySide === 'bottom') {
+
+        if (side === 'bottom') {
           childStyle.top = 'auto'
           childStyle.bottom = `${stickyBottom}px`
         } else {
@@ -104,6 +105,7 @@ export default {
 
       instance.active = true
       el.classList.add('is-sticky')
+      el.classList.add('is-sticky--' + side)
     }
 
     const reset = () => {
@@ -119,15 +121,29 @@ export default {
 
       instance.active = false
       el.classList.remove('is-sticky')
+      el.classList.remove('is-sticky--bottom')
+      el.classList.remove('is-sticky--top')
     }
 
     instance.listenAction = throttle(() => {
       const offsetTop = el.getBoundingClientRect().top
+      const isTop = offsetTop <= stickyTop
+      const isBottom = window.innerHeight - offsetTop <= 0
 
-      if (stickySide === 'bottom' && window.innerHeight - offsetTop <= 0) {
-        return sticky()
-      } else if (offsetTop <= stickyTop) {
-        return sticky()
+      let isSticky
+      let side = stickySide
+
+      if (stickySide === 'bottom') {
+        isSticky = isBottom && offsetTop > 0
+      } else if (stickySide === 'both') {
+        isSticky = isBottom || isTop
+        side = offsetTop > 0 ? 'bottom' : 'top'
+      } else if (stickySide === 'top') {
+        isSticky = isTop
+      }
+
+      if (isSticky) {
+        return sticky(side)
       }
       reset()
     })
@@ -178,6 +194,8 @@ export default {
         childStyle.bottom = ''
         childStyle.zIndex = instance.initialConfig.zIndex
         el.classList.remove('is-sticky')
+        el.classList.remove('is-sticky--bottom')
+        el.classList.remove('is-sticky--top')
       }
 
       return
