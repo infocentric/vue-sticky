@@ -3,6 +3,7 @@
   "version": "3.5.1",
   "description": "A directive to sticky element for vue.js.",
   "main": "./dist/vue-sticky.js",
+  "module": "esm.js",
   "scripts": {
     "build": "webpack -p",
     "dev": "webpack-dev-server --config ./webpack.example.config.js --inline --hot",
@@ -19,6 +20,26 @@
       "name": "Omar '0m4r' Adobati",
       "email": "omar@adobati.it",
       "url": "https://github.com/0m4r"
+    },
+    {
+      "name": "Istvan Farkas",
+      "email": "ifarkas@infocentric.ch",
+      "url": "https://github.com/infocentric"
+    },
+    {
+      "name": "Thilo Holzer",
+      "email": "tholzer@infocentric.ch",
+      "url": "https://github.com/infocentric"
+    },
+    {
+      "name": "Joël Poulin",
+      "email": "jpoulin@infocentric.ch",
+      "url": "https://github.com/infocentric"
+    },
+    {
+      "name": "Stephan Ullenboom",
+      "email": "stephan.ullenboom@47northlabs.ch",
+      "url": "https://gitlab.com/47northlabs/public"
     }
   ],
   "license": "ISC",
